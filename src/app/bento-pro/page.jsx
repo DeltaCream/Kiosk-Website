@@ -7,27 +7,34 @@ import { useState } from "react";
 
 export default function BentoProPage() {
     const snackItems = [
-        { name: "Snack Item 1", price: "$2.99" },
-        { name: "Snack Item 2", price: "$3.49" },
-        { name: "Snack Item 3", price: "$4.99" },
+        { name: "Onigiri", image: ".jpeg" },
+        { name: "Takoyaki", image: ".jpeg" },
+        { name: "Gyoza", image: ".jpeg" },
     ];
 
     const mainCourseItems = [
-        { name: "Main Course Item 1", price: "$8.99" },
-        { name: "Main Course Item 2", price: "$9.49" },
-        { name: "Main Course Item 3", price: "$10.99" },
+        { name: "Okonomiyaki", image: ".jpeg" },
+        { name: "Tonkatsu", image: ".jpeg" },
+        { name: "Udon", image: ".jpeg"},
+        { name: "Sushi", image: ".jpeg" },
+        { name: "Tempura", image: ".jpeg" },
+        { name: "Ramen", image: ".jpeg" },
+        { name: "Yakitori", image: ".jpeg" },
+        { name: "Teriyaki", image: ".jpeg" },
+        { name: "Temaki", image: ".jpeg"},
+        { name: "Donburi", image: ".jpeg"},
     ];
 
     const dessertItems = [
-        { name: "Dessert Item 1", price: "$4.99" },
-        { name: "Dessert Item 2", price: "$5.49" },
-        { name: "Dessert Item 3", price: "$6.99" },
+        { name: "Dorayaki", image: ".jpeg" },
+        { name: "Dango", image: ".jpeg" },
+        { name: "Manju", image: ".jpeg" },
     ];
 
     const drinkItems = [
-        { name: "Drink Item 1", price: "$1.99" },
-        { name: "Drink Item 2", price: "$2.49" },
-        { name: "Drink Item 3", price: "$2.99" },
+        { name: "Green Tea", image: ".jpeg" },
+        { name: "Melon Soda", image: ".jpeg" },
+        { name: "Matcha Drink", image: ".jpeg" },
     ];
 
     const [selectedItems, setSelectedItems] = useState({});

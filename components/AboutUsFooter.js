@@ -18,7 +18,8 @@ export default function AboutUsFooter() {
                     href="#"
                     className="text-red-500 hover:text-red-700 transition-colors duration-200"
                 >
-                    Contact Us
+                    Contact Us:
+                    +63 91234567890
                 </a>
             </div>
             <p className="text-sm text-gray-400">&copy; 2023 Kiosk Website</p>
