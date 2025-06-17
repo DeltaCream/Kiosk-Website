@@ -1,5 +1,6 @@
 // 'use client';
 // import { useState, useEffect } from 'react';
+'use client';
 
 import CheckoutButton from '@/components/CheckoutButton';
 import React from 'react';
@@ -10,41 +11,41 @@ import { headers } from 'next/headers';
 
 export default async function CheckoutPage() {
 
-    const headersList = headers();
-    const host = headersList.get('host');
-    const protocol = process.env.VERCEL ? 'https' : 'http';
-    const baseUrl = `${protocol}://${host}`;
+    // const headersList = headers();
+    // const host = headersList.get('host');
+    // const protocol = process.env.VERCEL ? 'https' : 'http';
+    // const baseUrl = `${protocol}://${host}`;
 
-    const response = await fetch(`${baseUrl}/api/checkout`, { cache: 'no-store' });
+    // const response = await fetch(`${baseUrl}/api/checkout`, { cache: 'no-store' });
 
-    // const response = await fetch('http://localhost:3000/api/checkout');
-    // const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/checkout`, { cache: 'no-store' });
+    // // const response = await fetch('http://localhost:3000/api/checkout');
+    // // const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/checkout`, { cache: 'no-store' });
 
-    if (!response.ok) {
-        throw new Error('Failed to fetch checkout data');
-    }
-    const data = await response.json();
-    // console.log("Checkout data:", data);
-    // console.log("Checkout selections:", data[0]);
-    if (!data || data.length === 0) {
-        return (
-            <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100"
-                style={{
-                    backgroundImage: "url('/bento-background-2.jpg')",
-                    backgroundSize: 'contain',
-                    backgroundPosition: 'center'
-                }}>
-                <h1 className="text-4xl font-bold mb-4">No selections found</h1>
-                <p className="text-2xl">Please go back to the Bento selection page to make your selections.</p>
-                <Link href="/bento" className="text-xlmt-4 text-blue-500 hover:underline">Go to Bento Selection</Link>
-            </div>
-        );
-    }
-    const selections = data[0].map((item) => ({
-        name: item.name,
-        items: item.items,
-    }));
-    console.log("Selections:", selections);
+    // if (!response.ok) {
+    //     throw new Error('Failed to fetch checkout data');
+    // }
+    // const data = await response.json();
+    // // console.log("Checkout data:", data);
+    // // console.log("Checkout selections:", data[0]);
+    // if (!data || data.length === 0) {
+    //     return (
+    //         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100"
+    //             style={{
+    //                 backgroundImage: "url('/bento-background-2.jpg')",
+    //                 backgroundSize: 'contain',
+    //                 backgroundPosition: 'center'
+    //             }}>
+    //             <h1 className="text-4xl font-bold mb-4">No selections found</h1>
+    //             <p className="text-2xl">Please go back to the Bento selection page to make your selections.</p>
+    //             <Link href="/bento" className="text-xlmt-4 text-blue-500 hover:underline">Go to Bento Selection</Link>
+    //         </div>
+    //     );
+    // }
+    // const selections = data[0].map((item) => ({
+    //     name: item.name,
+    //     items: item.items,
+    // }));
+    // console.log("Selections:", selections);
 
     // const router = useRouter();
     // const selections = router.query.selections
@@ -70,11 +71,40 @@ export default async function CheckoutPage() {
     //     fetchBentoSelections();
     // }, []);
 
+    const [selections, setSelections] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Read selections from localStorage
+        const stored = localStorage.getItem('bentoSelections');
+        if (stored) {
+            setSelections(JSON.parse(stored));
+        }
+        setLoading(false);
+    }, []);
+
     const bentos = [
         { name: 'Bento Pro', price: '₱349.00' },
         { name: 'Bento Pro Max', price: '₱499.00' },
         { name: 'Bento Pro Max Plus', price: '₱649.00' },
     ];
+
+    if (loading) return <div>Loading...</div>;
+
+    if (!selections.length) {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100"
+                style={{
+                    backgroundImage: "url('/bento-background-2.jpg')",
+                    backgroundSize: 'contain',
+                    backgroundPosition: 'center'
+                }}>
+                <h1 className="text-4xl font-bold mb-4">No selections found</h1>
+                <p className="text-2xl">Please go back to the Bento selection page to make your selections.</p>
+                <Link href="/bento" className="text-xl mt-4 text-blue-500 hover:underline">Go to Bento Selection</Link>
+            </div>
+        );
+    }
 
     return (
         <div className="flex flex-col py-8 items-center justify-center min-h-screen bg-gray-100"

@@ -48,6 +48,9 @@ export default function BentoSelectionPage() {
             return;
         }
 
+        localStorage.setItem('bentoSelections', JSON.stringify(selections));
+        router.push('/checkout'); // Redirect to the checkout page
+
         // router.push({
         //     pathname: '/checkout',
         //     query: { selections: JSON.stringify(selections) },
@@ -59,19 +62,19 @@ export default function BentoSelectionPage() {
         // });
 
         // router.push('/checkout'); 
-        fetch('/api/checkout', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ selections }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                router.push('/checkout'); // Redirect to the checkout page
-            })
-            .catch((error) => {
-                setError(error.message);
-            });
+        // fetch('/api/checkout', {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({ selections }),
+        // })
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         console.log(data);
+        //         router.push('/checkout'); // Redirect to the checkout page
+        //     })
+        //     .catch((error) => {
+        //         setError(error.message);
+        //     });
     }
 
     return (
