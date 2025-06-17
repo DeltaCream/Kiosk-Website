@@ -3,7 +3,14 @@ import Image from "next/image";
 export default function AboutUsPage() {
   return (
     <>
-    <div className="text-white min-h-screen p-8 flex flex-col items-center justify-center"
+    <div className="relative min-h-screen flex flex-col items-center justify-center text-white"
+      style={{
+        backgroundImage: "url('/bento-background-2.jpg')",
+        backgroundSize: 'cover',           // Ensures full coverage
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',     // Prevents tiling
+      }}
+    // className="text-white min-h-screen p-8 flex flex-col items-center justify-center"
       // style={{
       //   backgroundImage: "url('/bento-background-2.jpg')",
       //   backgroundSize: 'cover',
@@ -11,7 +18,7 @@ export default function AboutUsPage() {
       //   opacity: 0.75,
       // }}
     >
-      <div
+      {/* <div
         style={{
           backgroundImage: "url('/bento-background-2.jpg')",
           backgroundSize: 'cover',
@@ -24,7 +31,7 @@ export default function AboutUsPage() {
           height: '100%',
           zIndex: -1,
         }}
-      />
+      /> */}
         <Image
         src="/japaneats logo.jpeg"
         alt="About Us Image"
