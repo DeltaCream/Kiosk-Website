@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 export default function BentoProMaxPage() {
     const snackItems = [
         { name: "Onigiri", image: "onigiri.jpeg" },
-        { name: "Takoyaki", image: "takoyaki.png" },
+        { name: "Takoyaki", image: "takoyaki.jpeg" },
         { name: "Gyoza", image: "gyoza.jpeg" },
     ];
 
@@ -27,7 +27,7 @@ export default function BentoProMaxPage() {
     ];
 
     const dessertItems = [
-        { name: "Dorayaki", image: "dorayaki.jfif" },
+        { name: "Dorayaki", image: "dorayaki.jpeg" },
         { name: "Dango", image: "dango.jpeg" },
         { name: "Manju", image: "manju.webp" },
     ];
