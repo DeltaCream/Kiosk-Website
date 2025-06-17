@@ -8,8 +8,15 @@ import Link from 'next/link';
 
 export default async function CheckoutPage() {
 
+    const headersList = headers();
+    const host = headersList.get('host');
+    const protocol = process.env.VERCEL ? 'https' : 'http';
+    const baseUrl = `${protocol}://${host}`;
+
+    const response = await fetch(`${baseUrl}/api/checkout`, { cache: 'no-store' });
+
     // const response = await fetch('http://localhost:3000/api/checkout');
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/checkout`, { cache: 'no-store' });
+    // const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/checkout`, { cache: 'no-store' });
 
     if (!response.ok) {
         throw new Error('Failed to fetch checkout data');
