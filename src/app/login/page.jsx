@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import ErrorToast from "@/components/ErrorToast"; //"@/components/ErrorToast";
 import { useRouter } from 'next/navigation'
-import ToggleTheme from "@/components/ToggleTheme";
+// import ToggleTheme from "@/components/ToggleTheme";
 
 export default function LoginPage() {
 
@@ -57,8 +57,8 @@ export default function LoginPage() {
           backgroundSize: 'contain',
           backgroundPosition: 'center'
         }}>
-        <h1 className="text-3xl text-white font-bold mb-4">Login</h1>
-        <form onSubmit={handleSubmit} method="POST" className="bg-white rounded-lg p-8 shadow-md">
+        <h1 className="text-4xl text-white font-bold mb-4">Login</h1>
+        <form onSubmit={handleSubmit} method="POST" className="bg-white rounded-lg p-8 shadow-md w-full max-w-md">
           <div className="mb-4">
             <label
               htmlFor="username"
